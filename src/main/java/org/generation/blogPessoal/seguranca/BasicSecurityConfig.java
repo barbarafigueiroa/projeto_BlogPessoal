@@ -21,10 +21,11 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
 		auth.userDetailsService(userDatailService);
+		auth.inMemoryAuthentication().withUser("boaz").password(passwordEncoder().encode("boaz")).authorities("ROLE_ADMIN");
 	}
 	
 	@Bean
-	public PasswordEncoder passWordEncoder() {
+	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
