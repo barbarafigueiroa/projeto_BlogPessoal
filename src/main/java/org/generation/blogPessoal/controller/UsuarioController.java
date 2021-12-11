@@ -45,13 +45,6 @@ public class UsuarioController {
 		        .orElse(ResponseEntity.notFound().build());
 	}
 
-	@PutMapping("/atualizar")
-	public ResponseEntity<Usuario> putUsuario(@Valid @RequestBody Usuario usuario){		
-	        return usuarioService.atualizarUsuario(usuario)
-	                .map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
-	                .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
-	}
-
 	@PostMapping("/logar")
 	public ResponseEntity<UserLogin> autentication(@Valid @RequestBody Optional <UserLogin> user){
 	        return usuarioService.logarUsuario(user).map(resp -> ResponseEntity.ok(resp))
@@ -65,6 +58,12 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
+	@PutMapping("/atualizar")
+	public ResponseEntity<Usuario> putUsuario(@Valid @RequestBody Usuario usuario){		
+	        return usuarioService.atualizarUsuario(usuario)
+	                .map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+	                .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+	}
 	
 
 }

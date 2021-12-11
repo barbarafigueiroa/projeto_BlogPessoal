@@ -17,7 +17,7 @@ public class UserDatailsImpl implements UserDetails{
 
 	//construtor que vai pegar da classe usuario
 	public UserDatailsImpl(Usuario user) {
-
+		super();
 		this.userName = user.getUsuario();
 		this.password = user.getSenha();
 	}

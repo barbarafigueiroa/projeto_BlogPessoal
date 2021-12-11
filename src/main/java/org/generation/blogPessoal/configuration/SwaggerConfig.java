@@ -63,6 +63,7 @@ public class SwaggerConfig {
 			{
 				add(new ResponseBuilder().code("200").description("Sucesso!").build());
 				add(new ResponseBuilder().code("201").description("Criado!").build());
+				add(new ResponseBuilder().code("204").description("Apagou!").build());
 				add(new ResponseBuilder().code("400").description("Erro na requisição!").build());
 				add(new ResponseBuilder().code("401").description("Não Autorizado!").build());
 				add(new ResponseBuilder().code("403").description("Proibido!").build());

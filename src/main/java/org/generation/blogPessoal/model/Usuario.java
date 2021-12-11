@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,24 +20,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tb_usuarios")
 public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
+	@NotBlank(message = "O atributo Nome é Obrigatório!")
 	@Size(min = 5, max = 100)
 	private String nome;
 	
 	@ApiModelProperty(example = "bfamroim@outlook.com")
-	@NotNull(message = "O atributo Usuário é obrigatório!")
-	@Email(message = "O atributo Usuário deve ser um email Válido!!!")
+	@NotBlank(message = "O atributo Usuário é obrigatório!")
+	@Email(message = "O atributo Usuário deve ser um email!")
 	private String usuario;
 	
-	@NotNull
-	@Size(min = 5, max = 100)
+	@NotBlank(message = "O atributo Senha é Obrigatória!")
+	@Size(min = 8, max = 15,message = "A Senha deve ter no mínimo 8 caracteres")
 	private String senha;
 	
 	private String foto;
