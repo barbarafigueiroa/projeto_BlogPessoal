@@ -12,7 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -49,6 +48,25 @@ public class Usuario {
 	private List<Postagem> minhasPostagens = new ArrayList<>();
 	
 
+	public Usuario() {
+		
+	}
+
+	public Usuario(long id, @NotBlank(message = "O atributo Nome é Obrigatório!") @Size(min = 5, max = 100) String nome,
+			@NotBlank(message = "O atributo Usuário é obrigatório!") @Email(message = "O atributo Usuário deve ser um email!") String usuario,
+			@NotBlank(message = "O atributo Senha é Obrigatória!") @Size(min = 8, max = 15, message = "A Senha deve ter no mínimo 8 caracteres") String senha,
+			String foto, String tipo) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+		this.tipo = tipo;
+		
+	}
+
+	
 	public String getFoto() {
 		return foto;
 	}
